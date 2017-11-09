@@ -38,7 +38,7 @@ namespace Week_9
 
         static async void Turn45()
         {
-            await Brick.DirectCommand.TurnMotorAtSpeedForTimeAsync(OutputPort.D, 50, 375, false);
+            await Brick.DirectCommand.TurnMotorAtSpeedForTimeAsync(OutputPort.D, 50, 370, false);
         }
 
         static async void Turn90()
