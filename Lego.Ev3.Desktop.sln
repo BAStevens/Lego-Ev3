@@ -11,9 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lego.Ev3.Tester.Console", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleApp (WPF)", "SampleApps\SampleApp (WPF)\SampleApp (WPF).csproj", "{0B140421-4421-4673-972F-7FFB6268F0DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Week 9", "Week 9\Week 9.csproj", "{9332A9EB-B1A2-48DC-B931-4C50015F8421}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkingWithSensors", "WorkingWithSensors\WorkingWithSensors.csproj", "{BD62B614-0FB5-4874-862F-8559118CD14F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColorArena", "ColorArena\ColorArena.csproj", "{7AAC94AB-E25B-47B8-BD40-8E37F78EED3A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,19 +35,15 @@ Global
 		{0B140421-4421-4673-972F-7FFB6268F0DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B140421-4421-4673-972F-7FFB6268F0DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B140421-4421-4673-972F-7FFB6268F0DC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9332A9EB-B1A2-48DC-B931-4C50015F8421}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9332A9EB-B1A2-48DC-B931-4C50015F8421}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9332A9EB-B1A2-48DC-B931-4C50015F8421}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9332A9EB-B1A2-48DC-B931-4C50015F8421}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BD62B614-0FB5-4874-862F-8559118CD14F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BD62B614-0FB5-4874-862F-8559118CD14F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BD62B614-0FB5-4874-862F-8559118CD14F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BD62B614-0FB5-4874-862F-8559118CD14F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AAC94AB-E25B-47B8-BD40-8E37F78EED3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AAC94AB-E25B-47B8-BD40-8E37F78EED3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AAC94AB-E25B-47B8-BD40-8E37F78EED3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AAC94AB-E25B-47B8-BD40-8E37F78EED3A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {3ABAEEA2-1641-48A2-A8A9-79E8296B5372}
+		SolutionGuid = {38373DFC-B1F8-47D1-BCD7-C7C131ABD573}
 	EndGlobalSection
 EndGlobal

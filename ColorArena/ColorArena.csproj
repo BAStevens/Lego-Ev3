@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9332A9EB-B1A2-48DC-B931-4C50015F8421}</ProjectGuid>
+    <ProjectGuid>{7AAC94AB-E25B-47B8-BD40-8E37F78EED3A}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Week_9</RootNamespace>
-    <AssemblyName>Week 9</AssemblyName>
+    <RootNamespace>ColorArena</RootNamespace>
+    <AssemblyName>ColorArena</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
