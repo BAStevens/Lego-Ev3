@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("WorkingWithSensors")]
+[assembly: AssemblyTitle("ColorArena")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Swinburne University")]
-[assembly: AssemblyProduct("WorkingWithSensors")]
+[assembly: AssemblyProduct("ColorArena")]
 [assembly: AssemblyCopyright("Copyright © Swinburne University 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("bd62b614-0fb5-4874-862f-8559118cd14f")]
+[assembly: Guid("7aac94ab-e25b-47b8-bd40-8e37f78eed3a")]
 
 // Version information for an assembly consists of the following four values:
 //
