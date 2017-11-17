@@ -14,31 +14,41 @@ namespace ColorArena
         {
             Connect();
 
+            Console.Write("Base color: ");
+            int base_color = Convert.ToInt32(Console.ReadLine());
+
+            // Event handlers to store sensor proximity, color values.
             brick.BrickChanged += UltrasonicChanged;
             brick.BrickChanged += PhotodiodeChanged;
 
-			// Demo sequence
-            Console.WriteLine("Moving forward.");
-            Move(20, 20);
+            // Demo sequence
+            // Loops until base_color is detected.
+            do
+            {
+                Move(20, 20);
+                Console.WriteLine("Moving forward.");
 
-            while (proximity > 5) { }
-            Console.WriteLine("Turning left.");
-            Move(20, -20);
+                while (proximity > 10 && color != base_color) { }
+                Console.WriteLine("Obstacle encountered.");
 
-            while (proximity < 5) { }
+                Move(20, -20);
+                Console.WriteLine("Turning right.");
+
+                while (proximity < 20 && color != base_color) { }
+                Console.WriteLine("Path clear.");
+            } while (color != base_color);
+
             Stop();
+            Console.WriteLine("Base found.");
 
-            Console.WriteLine("EOF");
             Console.ReadKey();
 
-            /* Move forward() indefinitely,
-             * stop in proximity of a colored arena wall,
-             * if color == base_color then stop, else continue
-             * to rotate() until no obstacle in path, rendering
-             * unnecessary: the drifting-prone gyroscope and brute-forcing
-             * of imprecise motor power/speed parameters to
-             * reproduce the desired angle.
-             * Loop
+            /* Move forward indefinitely,
+             * rotate when in close proximity until path clear,
+             * loop if color != base_color, else stop.
+             * 
+             * (this renders unnecessary: the drifting-prone gyroscope and brute-forcing
+             * of imprecise motor power/speed parameters to reproduce the desired angle.)
              */
         }
 
@@ -49,7 +59,7 @@ namespace ColorArena
         }
 
         // Rotate both motors indefinitely to move.
-        // Direction is dictated by powerA/powerD parameters.
+        // powerA/powerD parameters dictate speed and direction.
         static async void Move(int powerA, int powerD)
         {
             brick.BatchCommand.StartMotor(OutputPort.A);
