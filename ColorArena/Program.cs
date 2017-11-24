@@ -14,7 +14,7 @@ namespace ColorArena
 
         static void Main(string[] args)
         {
-            BluetoothConnect();
+            Connect();
 
             brick.BrickChanged += DistanceChanged;
             brick.BrickChanged += ColorChanged;
@@ -31,8 +31,9 @@ namespace ColorArena
                 Move(-30, -50);
 
                 while (proximity < 20) { }
-                Move(20, 20);
-
+                Move(20, 20);     
+                
+                while(color != basecolor1){}
 
 
             }
@@ -66,7 +67,8 @@ namespace ColorArena
 
         static async void BluetoothConnect()
         {
-            brick = new Brick(new BluetoothCommunication("com4"));
+           // brick = new Brick(new BluetoothCommunication("com4"));
+            brick = new Brick(new UsbCommunication());
             await brick.ConnectAsync();
         }
         // Rotate both motors indefinitely to move forward.
