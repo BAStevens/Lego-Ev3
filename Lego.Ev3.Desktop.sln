@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.10
+VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lego.Ev3.Desktop", "Lego.Ev3.Desktop\Lego.Ev3.Desktop.csproj", "{79C444DE-86F1-4AFF-903A-4B6ED31655EA}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleApp (WPF)", "SampleApps\SampleApp (WPF)\SampleApp (WPF).csproj", "{0B140421-4421-4673-972F-7FFB6268F0DC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColorArena", "ColorArena\ColorArena.csproj", "{7AAC94AB-E25B-47B8-BD40-8E37F78EED3A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LegoUI", "LegoUI\LegoUI.csproj", "{FAA21549-D0DC-4AFA-83EA-0B4E4104E032}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{7AAC94AB-E25B-47B8-BD40-8E37F78EED3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7AAC94AB-E25B-47B8-BD40-8E37F78EED3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7AAC94AB-E25B-47B8-BD40-8E37F78EED3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FAA21549-D0DC-4AFA-83EA-0B4E4104E032}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAA21549-D0DC-4AFA-83EA-0B4E4104E032}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAA21549-D0DC-4AFA-83EA-0B4E4104E032}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAA21549-D0DC-4AFA-83EA-0B4E4104E032}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
