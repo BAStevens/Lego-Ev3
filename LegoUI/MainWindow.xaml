@@ -1,0 +1,177 @@
+﻿<Window x:Class="LegoUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="720" Width="1280">
+
+    <Grid>
+        <!--Adding both Columns-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <!--Adding both Rows-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <!--Select Homebase Title-->
+        <StackPanel Grid.Column="0" Grid.Row="0">
+                <TextBlock FontSize="60" TextAlignment="Center" Margin="50,50,50,50" FontFamily="OCR A Extended">Select Homebase</TextBlock>
+        </StackPanel>
+
+        <!--Sequence Title-->
+        <StackPanel Grid.Column="1" Grid.Row="0">
+            <TextBlock FontSize="40" TextAlignment="Center" Margin="0,40,0,0" FontFamily="OCR A Extended">Homebase</TextBlock>
+            <TextBlock FontSize="40" TextAlignment="Center" Margin="0,0,0,30" FontFamily="OCR A Extended">Sequence</TextBlock>
+        </StackPanel>
+
+        <!---Creating a new grid in large bottom left corner space-->
+        <StackPanel Grid.Column="0" Grid.Row="1">
+            <Grid Height="530">
+                <!--Making 5 Columns-->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.7*"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="0.7*"/>
+                </Grid.ColumnDefinitions>
+
+                <!--First Column-->
+                <StackPanel Grid.Column="0" Grid.Row="0">
+                    <StackPanel.Background>
+                        <ImageBrush ImageSource="HomebaseLeft.png"/>
+                    </StackPanel.Background>
+
+                </StackPanel>
+                <!--Second Column-->
+                <StackPanel Grid.Column="1" Grid.Row="0">
+                    <Button Name="btnRedBlue" FontSize="27" Content="Red and Blue" Height="55" Margin="20,70,20,275" Click="btnRedBlue_Click"></Button>
+                    <Button Name="btnBlueYellow" FontSize="23" Content="Blue and Yellow" Height="55" Margin="20,0,20,0" Click="btnBlueYellow_Click"></Button>
+                </StackPanel>
+                <!--Third Column-->
+                <StackPanel Grid.Column="2" Grid.Row="0">
+                    <Button Name="btnWhiteCube" FontSize="25" Content="White Cube" Height="110" Margin="40,200,40,250" Background="White" BorderBrush="Black" BorderThickness="3" Click="btnWhiteCube_Click"></Button>
+                    <Image Height="540" Margin="68,0,15.333,0" Source="HomebaseRight.png" Stretch="Fill"/>
+                </StackPanel>
+                <!--Forth Column-->
+                <StackPanel Grid.Column="3" Grid.Row="0">
+                    <Button Name="btnRedBlack" FontSize="27" Content="Red and Black" Height="55" Margin="20,70,20,275" Click="btnRedBlack_Click"></Button>
+                    <Button Name="btnBlackYellow" FontSize="23" Content="Black and Yellow" Height="55" Margin="20,0,20,0" Click="btnBlackYellow_Click"></Button>
+                </StackPanel>
+                <!--Fifth Column-->
+                <StackPanel Grid.Column="4" Grid.Row="0">
+                    <StackPanel.Background>
+                        <ImageBrush ImageSource="HomebaseRight.png"/>
+                    </StackPanel.Background>
+                </StackPanel>
+
+            </Grid>
+        </StackPanel>
+
+        <!--Creating a new grid on the right side corner space-->
+        <StackPanel Grid.Column="1" Grid.Row="1">
+            <Grid>
+                    <!--Setting Larger and Smaller Rows-->
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="415"/>
+                        <RowDefinition Height="115"/>
+                    </Grid.RowDefinitions>
+                
+                    <!--DESIGN 2: Creating a new grid for the queue display-->
+                <StackPanel Grid.Column="0" Grid.Row="0">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="41.5"/>
+                            <RowDefinition Height="41.5"/>
+                            <RowDefinition Height="41.5"/>
+                            <RowDefinition Height="41.5"/>
+                            <RowDefinition Height="41.5"/>
+                            <RowDefinition Height="41.5"/>
+                            <RowDefinition Height="41.5"/>
+                            <RowDefinition Height="41.5"/>
+                            <RowDefinition Height="41.5"/>
+                            <RowDefinition Height="41.5"/>
+                        </Grid.RowDefinitions>
+
+                        <!--Column 1 // Row 1-->
+                        <StackPanel Grid.Row="0" Grid.Column="0">
+                            <TextBlock FontSize="25" TextAlignment="Left" Margin="0" FontFamily="OCR A Extended">First Location:</TextBlock>
+                        </StackPanel>
+                        
+                        <!--Column 1 // Row 2-->
+                        <StackPanel Grid.Row="1" Grid.Column="0">
+                            <TextBlock FontSize="15" TextAlignment="Right" Margin="0,0,35,0" FontFamily="OCR A Extended">White Cube</TextBlock>
+                        </StackPanel>
+                        
+                        <!--Column 1 // Row 3-->
+                        <StackPanel Grid.Row="2" Grid.Column="0">
+                            <TextBlock FontSize="25" TextAlignment="Left" Margin="0" FontFamily="OCR A Extended">Second Location:</TextBlock>
+                        </StackPanel>
+                        
+                        <!--Column 1 // Row 4-->
+                        <StackPanel Grid.Row="3" Grid.Column="0">
+                            <TextBlock FontSize="15" TextAlignment="Right" Margin="0,0,35,0" FontFamily="OCR A Extended">Blue and Yellow</TextBlock>
+                        </StackPanel>
+                        
+                        <!--Column 1 // Row 5-->
+                        <StackPanel Grid.Row="4" Grid.Column="0">
+                            <TextBlock FontSize="25" TextAlignment="Left" Margin="0" FontFamily="OCR A Extended">Third Location:</TextBlock>
+                        </StackPanel>
+                        
+                        <!--Column 1 // Row 6-->
+                        <StackPanel Grid.Row="5" Grid.Column="0">
+                            <TextBlock FontSize="10" TextAlignment="Right" Margin="0" FontFamily="OCR A Extended">1.</TextBlock>
+                        </StackPanel>
+
+                        <!--Column 1 // Row 7-->
+                        <StackPanel Grid.Row="6" Grid.Column="0">
+                            <TextBlock FontSize="25" TextAlignment="Left" Margin="0" FontFamily="OCR A Extended">Forth Location:</TextBlock>
+                        </StackPanel>
+
+                        <!--Column 1 // Row 8-->
+                        <StackPanel Grid.Row="7" Grid.Column="0">
+                            <TextBlock FontSize="10" TextAlignment="Right" Margin="0" FontFamily="OCR A Extended">1.</TextBlock>
+                        </StackPanel>
+
+                        <!--Column 1 // Row 9-->
+                        <StackPanel Grid.Row="8" Grid.Column="0">
+                            <TextBlock FontSize="25" TextAlignment="Left" Margin="0" FontFamily="OCR A Extended">Fifth Location:</TextBlock>
+                        </StackPanel>
+
+                        <!--Column 1 // Row 10-->
+                        <StackPanel Grid.Row="9" Grid.Column="0">
+                            <TextBlock FontSize="10" TextAlignment="Right" Margin="0" FontFamily="OCR A Extended">1.</TextBlock>
+                        </StackPanel>
+
+                    </Grid>
+                </StackPanel>
+
+                    <!--Creating Two Columns for Button Placement(s)-->
+                <StackPanel Grid.Column="0" Grid.Row="1">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <!--Left Side-->
+                        <StackPanel Grid.Row="0" Grid.Column="0">
+                            <Button Name="btnClear" FontSize="27" Content="Clear" Margin="20,40,20,30" Click="btnClear_Click"></Button>
+                        </StackPanel>
+
+                        <!--Right Side-->
+                        <StackPanel Grid.Row="0" Grid.Column="1">
+                            <Button Name="btnStart" FontSize="27" Content="Start" Margin="20,40,20,30" Click="btnStart_Click"></Button>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Window>
