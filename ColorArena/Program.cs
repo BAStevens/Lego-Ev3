@@ -1,6 +1,7 @@
 ﻿using System;
 using Lego.Ev3.Core;
 using Lego.Ev3.Desktop;
+using System.Threading;
 
 namespace ColorArena
 {
@@ -9,58 +10,66 @@ namespace ColorArena
         public static Brick brick { get; set; }
         public static float proximity { get; set; }
         public static float color { get; set; }
-        public static float angle {get; set;}
+        public static float angle { get; set; }
 
         static void Main(string[] args)
         {
-            Connect();
+            BluetoothConnect();
 
-            Console.Write("Base color: ");
-            int base_color = Convert.ToInt32(Console.ReadLine());
+            brick.BrickChanged += DistanceChanged;
+            brick.BrickChanged += ColorChanged;
+            brick.BrickChanged += GyroChanged;
 
-            // Event handlers to store sensor proximity, color values.
-            brick.BrickChanged += UltrasonicChanged;
-            brick.BrickChanged += PhotodiodeChanged;
-	    brick.BrickChanged += GyroChanged;
-
-            // Demo sequence
-            // Loops until base_color is detected.
-            while (color != base_color)
+            Console.WriteLine("Enter base color: ");
+            int basecolor1 = Int32.Parse(Console.ReadLine());
+            while (color != basecolor1)
             {
-                while (proximity > 20 && color != base_color){}
-                
-                    Move(20, 20);
-                    Console.WriteLine("Path Clear");
-                
-                while (proximity > 10 && color != base_color){}
-                
-                    Move(20, -20);
-                    Console.WriteLine("Obstacle encountered.");
-                
-                
+                Move(20, 20);
+
+                while (proximity > 3) { }
+
+                Move(-30, -50);
+
+                while (proximity < 20) { }
+                Move(20, 20);
+
+
+
             }
-            Console.WriteLine("Base found.");
 
+            Stop();
+
+            //    Console.WriteLine("Moving forward.");
+
+            //    while (proximity > 10 && color != base_color) { }
+            //    Console.WriteLine("Obstacle encountered.");
+
+            //    Move(20, -20);
+            //    Console.WriteLine("Turning right.");
+
+            //    while (proximity < 20 && color != base_color) { }
+            //    Console.WriteLine("Path clear.");
+
+
+
+
+
+            Console.WriteLine("Sequence complete!");
             Console.ReadKey();
-
-            /* Move forward indefinitely,
-             * rotate when in close proximity until path clear,
-             * loop if color != base_color, else stop.
-             * 
-             * (this renders unnecessary: the drifting-prone gyroscope and brute-forcing
-             * of imprecise motor power/speed parameters to reproduce the desired angle.)
-             */
         }
 
         static async void Connect()
         {
-           // brick = new Brick(new BluetoothCommunication("com4"));
             brick = new Brick(new UsbCommunication());
             await brick.ConnectAsync();
         }
 
-        // Rotate both motors indefinitely to move.
-        // powerA/powerD parameters dictate speed and direction.
+        static async void BluetoothConnect()
+        {
+            brick = new Brick(new BluetoothCommunication("com4"));
+            await brick.ConnectAsync();
+        }
+        // Rotate both motors indefinitely to move forward.
         static async void Move(int powerA, int powerD)
         {
             brick.BatchCommand.StartMotor(OutputPort.A);
@@ -68,6 +77,16 @@ namespace ColorArena
 
             brick.BatchCommand.StartMotor(OutputPort.D);
             brick.BatchCommand.TurnMotorAtPower(OutputPort.D, powerD);
+
+            await brick.BatchCommand.SendCommandAsync();
+        }
+
+
+
+        static async void Reverse()
+        {
+            brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.A, -20, 3000, false);
+            brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.D, -20, 3000, false);
 
             await brick.BatchCommand.SendCommandAsync();
         }
@@ -80,21 +99,30 @@ namespace ColorArena
             await brick.BatchCommand.SendCommandAsync();
         }
 
-        static void UltrasonicChanged(object sender, BrickChangedEventArgs e)
+
+
+
+
+        // Rotate until path ahead is clear; rendering unnecessary: the gyroscope, and
+        // brute-forcing of imprecise motor power/speed parameters to reproduce the desired angle.
+        //static async void Rotate() { }
+
+        // Raw ultrasonic values
+        static void DistanceChanged(object sender, BrickChangedEventArgs e)
         {
             proximity = e.Ports[InputPort.Two].SIValue;
         }
 
-        static void PhotodiodeChanged(object sender, BrickChangedEventArgs e)
+        // Raw color sensor values
+        static void ColorChanged(object sender, BrickChangedEventArgs e)
         {
             brick.Ports[InputPort.Four].SetMode(ColorMode.Color);
             color = e.Ports[InputPort.Four].SIValue;
         }
 
- 	        static void GyroChanged(object sender, BrickChangedEventArgs e)
+        static void GyroChanged(object sender, BrickChangedEventArgs e)
         {
             angle = e.Ports[InputPort.One].SIValue;
         }
-
     }
 }
