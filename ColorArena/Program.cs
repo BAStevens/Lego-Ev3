@@ -7,25 +7,23 @@ namespace ColorArena
     class Program
     {
         public static Brick brick { get; set; }
+        public static float proximity { get; set; }
+        public static float color { get; set; }
+        public static float angle { get; set; }
 
         static void Main(string[] args)
         {
-            Connect();
+            BluetoothConnect();
 
             brick.BrickChanged += DistanceChanged;
             brick.BrickChanged += ColorChanged;
+            brick.BrickChanged += GyroChanged;
 
-            brick.BrickChanged += CollisionAvoidance;
+            
 
-            Forward();
+            
 
-            /* :loop
-             * Move forward() indefinitely,
-             * stop in proximity of a colored arena wall,
-             * if color == base_color then stop, else continue
-             * to rotate() until no obstacle in path,
-             * goto loop
-             */
+            
 
             Console.WriteLine("Sequence complete!");
             Console.ReadKey();
@@ -37,29 +35,25 @@ namespace ColorArena
             await brick.ConnectAsync();
         }
 
+        static async void BluetoothConnect()
+        {
+            brick = new Brick(new BluetoothCommunication("com4"));
+            await brick.ConnectAsync();
+        }
         // Rotate both motors indefinitely to move forward.
-        static async void Forward()
+        static async void Move(int powerA, int powerD)
         {
             brick.BatchCommand.StartMotor(OutputPort.A);
-            brick.BatchCommand.TurnMotorAtPower(OutputPort.A, 20);
+            brick.BatchCommand.TurnMotorAtPower(OutputPort.A, powerA);
 
             brick.BatchCommand.StartMotor(OutputPort.D);
-            brick.BatchCommand.TurnMotorAtPower(OutputPort.D, 20);
+            brick.BatchCommand.TurnMotorAtPower(OutputPort.D, powerD);
 
             await brick.BatchCommand.SendCommandAsync();
         }
 
-        // Stop both motors when in close proximity of an obstacle.
-        static async void CollisionAvoidance(object sender, BrickChangedEventArgs e)
-        {
-            if (e.Ports[InputPort.Two].SIValue < 10)
-            {
-                brick.BatchCommand.StopMotor(OutputPort.A, true);
-                brick.BatchCommand.StopMotor(OutputPort.D, true);
-
-                await brick.BatchCommand.SendCommandAsync();
-            }
-        }
+        
+        
 
         // Rotate until path ahead is clear; rendering unnecessary: the gyroscope, and
         // brute-forcing of imprecise motor power/speed parameters to reproduce the desired angle.
@@ -68,14 +62,19 @@ namespace ColorArena
         // Raw ultrasonic values
         static void DistanceChanged(object sender, BrickChangedEventArgs e)
         {
-            Console.WriteLine(e.Ports[InputPort.Two].SIValue.ToString());
+            proximity = e.Ports[InputPort.Two].SIValue;
         }
 
         // Raw color sensor values
         static void ColorChanged(object sender, BrickChangedEventArgs e)
         {
             brick.Ports[InputPort.Four].SetMode(ColorMode.Color);
-            Console.WriteLine(e.Ports[InputPort.Four].SIValue.ToString());
+            color = e.Ports[InputPort.Four].SIValue;
+        }
+
+        static void GyroChanged(object sender, BrickChangedEventArgs e)
+        {
+            angle = e.Ports[InputPort.One].SIValue;
         }
     }
 }
